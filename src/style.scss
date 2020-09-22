@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font: 800 100% sans-serif;
+  position: relative;
+}
+
+@for $i from 1 through 100 {
+  $red: random(256)-1;
+  $green: random(256)-1;
+  $blue: random(256)-1;
+  $alpha: random(100) / 100;
+  $width: random(60);
+  $height: random(60);
+  $x-position: random(100-$width);
+  $y-position: random(100-$height);
+  $z-index: random(100)-1;
+
+  div:nth-of-type(#{$i}) {
+    background-color: unquote("rgba(#{$red}, #{$green}, #{$blue}, #{$alpha})");
+    position: absolute;
+    width: #{$width}vw;
+    min-width: 8vw;
+    height: #{$height}vh;
+    min-height: 5vh;
+    left: #{$x-position}vw;
+    top: #{$y-position}vh;
+    z-index: $z-index;
+  }
+}
+
+div {
+  display: grid;
+  place-items: center;
+}
